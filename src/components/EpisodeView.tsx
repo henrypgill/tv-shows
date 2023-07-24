@@ -1,4 +1,5 @@
 import { getEpisodeCode } from "../core/episodeCode";
+import { removePTags } from "../core/parseSummary";
 
 export interface IEpisode {
   id: number;
@@ -25,13 +26,12 @@ interface EpisodeViewProps {
 }
 
 export function EpisodeView({ episode }: EpisodeViewProps): JSX.Element {
-  const episodeCode = getEpisodeCode(episode.season, episode.number);
   return (
     <li>
       <div>
-        <h3>{episodeCode}</h3>
+        <h3>{getEpisodeCode(episode.season, episode.number)}</h3>
         <h4>{episode.name}</h4>
-        {episode.summary}
+        <p>{removePTags(episode.summary)}</p>
       </div>
       <img src={episode.image.medium} alt={"episode-medium-img"}></img>
     </li>
