@@ -1,3 +1,9 @@
+/**
+ *
+ * @param season
+ * @param episode
+ * @returns
+ */
 export function getEpisodeCode(season: number, episode: number): string {
   let seasonCode: string;
   if (season < 10) {
