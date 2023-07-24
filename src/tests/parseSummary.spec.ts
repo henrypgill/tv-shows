@@ -7,3 +7,7 @@ test("p tags", () => {
 test("no p tags", () => {
   expect(removePTags("hello")).toBe("hello");
 });
+
+test("wierd p tags", () => {
+  expect(removePTags("hello</p><p>")).toBe("hello");
+});
