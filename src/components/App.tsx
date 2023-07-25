@@ -5,7 +5,7 @@ import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { useState } from "react";
 import { SearchBox } from "./SearchBox";
 import Footer from "./Footer";
-import { FilterDropDown } from "./FilterDropdown";
+import { FilterDropDown } from "./FilterDropDown";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
