@@ -3,6 +3,7 @@ import episodes from "../data/got-episodes.json";
 import { EpisodeList } from "./EpisodeList";
 import { searchNameOrSummary } from "../core/episodeFilter";
 import { useState } from "react";
+import Footer from "./Footer";
 
 function App() {
   //@ts-ignore
@@ -10,7 +11,14 @@ function App() {
 
   const filteredEpisodes = episodes.filter(searchNameOrSummary(textInput));
 
-  return <EpisodeList episodes={filteredEpisodes} />;
+  return (
+    <>
+      <main>
+        <EpisodeList episodes={filteredEpisodes} />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default App;

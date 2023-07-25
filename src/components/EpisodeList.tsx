@@ -7,7 +7,7 @@ interface EpisodeListProps {
 export function EpisodeList({ episodes }: EpisodeListProps): JSX.Element {
   return (
     <section>
-      <ol>
+      <ol className="episode-list">
         {episodes.map((episode) => (
           <EpisodeView key={episode.id} episode={episode} />
         ))}

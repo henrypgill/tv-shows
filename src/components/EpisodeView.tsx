@@ -27,13 +27,17 @@ interface EpisodeViewProps {
 
 export function EpisodeView({ episode }: EpisodeViewProps): JSX.Element {
   return (
-    <li>
-      <div>
+    <li className="episode-view">
+      <img
+        className="episode-img"
+        src={episode.image.medium}
+        alt={"episode-medium-img"}
+      ></img>
+      <div className="episode-text">
         <h3>{getEpisodeCode(episode.season, episode.number)}</h3>
         <h4>{episode.name}</h4>
         <p>{removePTags(episode.summary)}</p>
       </div>
-      <img src={episode.image.medium} alt={"episode-medium-img"}></img>
     </li>
   );
 }
