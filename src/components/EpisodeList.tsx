@@ -1,7 +1,5 @@
-
 import { EpisodeView } from "./EpisodeView";
 import { IEpisode } from "../core/fetchData";
-
 
 interface EpisodeListProps {
   episodes: IEpisode[];
@@ -15,7 +13,6 @@ export function EpisodeList({ episodes }: EpisodeListProps): JSX.Element {
   return (
     <section>
       <ol className="episode-list">
-
         {episodes.map((episode) => (
           <EpisodeView key={episode.id} episode={episode} />
         ))}
