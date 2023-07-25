@@ -7,9 +7,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 function App() {
-  //@ts-ignore
   const [searchInput, setSearchInput] = useState("");
-
   const filteredEpisodes = episodes.filter(searchNameOrSummary(searchInput));
 
   return (
@@ -20,7 +18,6 @@ function App() {
         filteredCount={filteredEpisodes.length}
         totalCount={episodes.length}
       />
-
       <main>
         <EpisodeList episodes={filteredEpisodes} />
       </main>
