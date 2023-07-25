@@ -3,22 +3,22 @@ import { removePTags } from "../core/parseSummary";
 
 export interface IEpisode {
   id: number;
-  url: string;
+  // url: string;
   name: string;
   season: number;
   number: number;
-  type: string;
-  airdate: string;
-  airtime: string;
-  airstamp: string;
-  rating: { average: number };
-  runtime: number;
+  // type: string;
+  // airdate: string;
+  // airtime: string;
+  // airstamp: string;
+  // rating: { average: number };
+  // runtime: number;
   image: {
     medium: string;
-    original: string;
+    // original: string;
   };
   summary: string;
-  _links: { self: { href: string } };
+  // _links: { self: { href: string } };
 }
 
 interface EpisodeViewProps {
