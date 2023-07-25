@@ -15,10 +15,26 @@ body {
 
   align-items: center;
   justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+}
+
+#root {
+  width: 100%;
+}
+
+header {
+  background-color: #d0d0d0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0px;
+  column-gap: 8px;
 }
 
 main {
-  width: 1440px;
+  max-width: 1440px;
 }
 
 footer {
@@ -26,6 +42,72 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+/* Header Content Styling */
+
+.search-input {
+  background-color: #dfdfdf;
+  /* border: none; */
+  border-radius: 4px;
+  height: 28px;
+  color: black;
+  border: 0.2px solid black;
+  padding: 0px 4px;
+  display: inline-block;
+  margin-left: 32px;
+}
+
+.search-input::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.filter-count {
+  width: 300px;
+}
+
+/* ---------------------- Content STLYING ---------------------- */
+
+/* episode container styling */
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+/* episode card styling */
+
+.episode-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 24px;
+
+  height: 200px;
+
+  justify-content: flex-start;
+  padding: 16px 32px;
+}
+
+/* .episode-text {} */
+
+.episode-img {
+  height: 100%;
+  max-width: 320px;
+  object-fit: cover;
+}
+
+.episode-text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.episode-text p {
+  overflow: auto;
+}
+
+/* ----- general styling ----- */
 
 /* text */
 h1 {
@@ -43,7 +125,7 @@ h2 {
 h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  margin: 8px 16px 16px 8px;
+  margin: 8px 16px 8px 8px;
 }
 
 h4 {
@@ -61,35 +143,9 @@ p {
 ol,
 ul {
   list-style-type: none;
+  padding: 0px;
 }
 
-/* ---------------------- Content STLYING ---------------------- */
-
-/* episode container styling */
-.episode-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  row-gap: 32px;
-}
-
-/* episode card styling */
-
-.episode-view {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  column-gap: 24px;
-
-  height: 200px;
-
-  justify-content: flex-start;
-}
-
-/* .episode-text {} */
-
-.episode-img {
-  height: 100%;
-  max-width: 320px;
-  object-fit: cover;
+li {
+  padding-left: 16px;
 }

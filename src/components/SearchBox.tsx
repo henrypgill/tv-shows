@@ -13,6 +13,7 @@ export function SearchBox({
       onChange={(e) => onChangeHandler(e.target.value)}
       type="text"
       placeholder="Search..."
+      className="search-input"
     ></input>
   );
 }

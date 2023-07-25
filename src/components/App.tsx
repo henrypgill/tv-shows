@@ -14,8 +14,13 @@ function App() {
   return (
     <>
       <header>
-        <SearchBox searchInput={searchInput} onChangeHandler={setSearchInput} />
-        <h3>{`Displaying ${filteredEpisodes.length}/${episodes.length} Episodes`}</h3>
+        <div className="filter-container">
+          <SearchBox
+            searchInput={searchInput}
+            onChangeHandler={setSearchInput}
+          />
+        </div>
+        <h3 className="filter-count">{`Displaying ${filteredEpisodes.length}/${episodes.length} Episodes`}</h3>
       </header>
 
       <main>
