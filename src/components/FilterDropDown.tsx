@@ -22,6 +22,7 @@ export function FilterDropDown({
     <select
       onChange={(e) => handleOnChange(e.target.value)}
       value={dropDownState}
+      className="dropdown-input"
     >
       <option value="">Show All</option>
       {optionsElements}
