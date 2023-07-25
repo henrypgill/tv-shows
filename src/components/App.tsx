@@ -1,11 +1,11 @@
 import "./App.css";
-import episodes from "../data/got-episodes.json";
-import { EpisodeList } from "./EpisodeList";
-import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { useState } from "react";
+import episodes from "../data/got-episodes.json";
+import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { SearchBox } from "./SearchBox";
+import { FilterDropDown } from "./FilterDropDown";
+import { EpisodeList } from "./EpisodeList";
 import Footer from "./Footer";
-import { FilterDropDown } from "./FilterDropdown";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
