@@ -5,6 +5,10 @@ interface EpisodeListProps {
 }
 
 export function EpisodeList({ episodes }: EpisodeListProps): JSX.Element {
+  if (episodes.length === 0) {
+    return <h3>No episodes found. Try expanding your search!</h3>;
+  }
+
   return (
     <section>
       <ol className="episode-list">
