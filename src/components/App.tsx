@@ -1,20 +1,29 @@
 import "./App.css";
 import episodes from "../data/got-episodes.json";
 import { EpisodeList } from "./EpisodeList";
-import { searchNameOrSummary } from "../core/episodeFilter";
+import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { useState } from "react";
 import { SearchBox } from "./SearchBox";
 import Footer from "./Footer";
+import { FilterDropDown } from "./FilterDropdown";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
+  const [episodeFilter, setEpisodeFilter] = useState("");
 
-  const filteredEpisodes = episodes.filter(searchNameOrSummary(searchInput));
+  const filteredEpisodes = episodes
+    .filter(searchEpisodeId(episodeFilter))
+    .filter(searchNameOrSummary(searchInput));
 
   return (
     <>
       <header>
         <div className="filter-container">
+          <FilterDropDown
+            options={episodes}
+            dropDownState={episodeFilter}
+            handleOnChange={setEpisodeFilter}
+          />
           <SearchBox
             searchInput={searchInput}
             onChangeHandler={setSearchInput}

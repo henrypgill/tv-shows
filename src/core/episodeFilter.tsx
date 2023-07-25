@@ -11,3 +11,13 @@ export function searchNameOrSummary(
     return name.includes(searchStr) || summary.includes(searchStr);
   };
 }
+
+export function searchEpisodeId(id: string): (episode: IEpisode) => boolean {
+  return (episode) => {
+    if (id === "") {
+      return true;
+    }
+
+    return parseInt(id) === episode.id;
+  };
+}
