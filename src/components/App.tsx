@@ -13,7 +13,12 @@ function App() {
   const [episodeFilter, setEpisodeFilter] = useState("");
 
   useEffect(() => {
-    getEpisodes().then((result) => setEpisodes(result));
+    async function fetchEpisodeData() {
+      const episodeData = await getEpisodes();
+      setEpisodes(episodeData);
+    }
+
+    fetchEpisodeData();
   }, []);
 
   const filteredEpisodes = episodes
