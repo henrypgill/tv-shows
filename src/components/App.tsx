@@ -4,15 +4,23 @@ import { EpisodeList } from "./EpisodeList";
 import { searchNameOrSummary } from "../core/episodeFilter";
 import { useState } from "react";
 import Footer from "./Footer";
+import Header from "./Header";
 
 function App() {
   //@ts-ignore
-  const [textInput, setTextInput] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
-  const filteredEpisodes = episodes.filter(searchNameOrSummary(textInput));
+  const filteredEpisodes = episodes.filter(searchNameOrSummary(searchInput));
 
   return (
     <>
+      <Header
+        searchInput={searchInput}
+        onChangeHandler={setSearchInput}
+        filteredCount={filteredEpisodes.length}
+        totalCount={episodes.length}
+      />
+
       <main>
         <EpisodeList episodes={filteredEpisodes} />
       </main>

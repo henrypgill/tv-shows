@@ -1,9 +1,33 @@
+/* ---------------------- GENERAL STYLING ---------------------- */
+
+/* root element */
 html {
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-size: 16;
   color: black;
 }
 
+/* structure */
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: flex-start;
+}
+
+main {
+  width: 1440px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* text */
 h1 {
   font-size: 3rem;
   font-weight: 900;
@@ -39,31 +63,17 @@ ul {
   list-style-type: none;
 }
 
-main {
-  max-width: 1440px;
-}
+/* ---------------------- Content STLYING ---------------------- */
 
-body {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-
-  align-items: center;
-  justify-content: flex-start;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* episode container styling */
 .episode-list {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   row-gap: 32px;
 }
+
+/* episode card styling */
 
 .episode-view {
   display: flex;
