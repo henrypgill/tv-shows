@@ -1,4 +1,3 @@
-
 import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import episodes from "../data/got-episodes.json";
 
@@ -7,7 +6,6 @@ import episodes from "../data/got-episodes.json";
 
 test("test search string found in name", () => {
   const result = episodes.filter(searchNameOrSummary("Kingsroad"));
-
   expect(result.length).toBe(1);
   expect(result[0].id).toBe(4953);
 });
@@ -29,5 +27,4 @@ test("test search episode ", () => {
 test("test search show all episodes", () => {
   const result = episodes.filter(searchEpisodeId(""));
   expect(result.length).toBe(73);
-
 });

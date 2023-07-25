@@ -1,15 +1,20 @@
 import "./App.css";
-import { useState } from "react";
-import episodes from "../data/got-episodes.json";
+import { useState, useEffect } from "react";
 import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { SearchBox } from "./SearchBox";
 import { FilterDropDown } from "./FilterDropDown";
 import { EpisodeList } from "./EpisodeList";
+import { getEpisodes, IEpisode } from "../core/fetchData";
 import Footer from "./Footer";
 
 function App() {
+  const [episodes, setEpisodes] = useState<IEpisode[]>([]);
   const [searchInput, setSearchInput] = useState("");
   const [episodeFilter, setEpisodeFilter] = useState("");
+
+  useEffect(() => {
+    getEpisodes().then((result) => setEpisodes(result));
+  }, []);
 
   const filteredEpisodes = episodes
     .filter(searchEpisodeId(episodeFilter))

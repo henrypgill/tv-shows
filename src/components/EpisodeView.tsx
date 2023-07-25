@@ -1,25 +1,6 @@
 import { getEpisodeCode } from "../core/episodeCode";
 import { removePTags } from "../core/parseSummary";
-
-export interface IEpisode {
-  id: number;
-  // url: string;
-  name: string;
-  season: number;
-  number: number;
-  // type: string;
-  // airdate: string;
-  // airtime: string;
-  // airstamp: string;
-  // rating: { average: number };
-  // runtime: number;
-  image: {
-    medium: string;
-    // original: string;
-  };
-  summary: string;
-  // _links: { self: { href: string } };
-}
+import { IEpisode } from "../core/fetchData";
 
 interface EpisodeViewProps {
   episode: IEpisode;

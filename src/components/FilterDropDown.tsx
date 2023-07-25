@@ -1,4 +1,4 @@
-import { IEpisode } from "./EpisodeView";
+import { IEpisode } from "../core/fetchData";
 import { getEpisodeCode } from "../core/episodeCode";
 
 interface FilterDropProps {
