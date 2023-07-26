@@ -2,14 +2,22 @@ import { IEpisode } from "../core/fetchEpisodes";
 import { getEpisodeCode } from "../core/episodeCode";
 import { IShow } from "../core/fetchShows";
 
-interface FilterDropProps {
-  type: "show" | "episode";
-  options: IEpisode[] | IShow[];
+type FilterDropProps = {
   dropDownState: string;
   handleOnChange(option: string): void;
-}
+} & (ShowDropDown | EpisodeDropDown);
 
-export function FilterDropDown({
+type ShowDropDown = {
+  type: "show";
+  options: IShow[];
+};
+
+type EpisodeDropDown = {
+  type: "episode";
+  options: IEpisode[];
+};
+
+export default function FilterDropDown({
   type,
   options,
   dropDownState,
@@ -28,22 +36,28 @@ export function FilterDropDown({
         value={dropDownState}
         className="dropdown-input"
       >
-        <option value="">Show All</option>
+        <option value="">All Episodes</option>
         {optionsElements}
       </select>
     );
-  } else if (type === "show") {
-    const optionsElements = options.map((s) => (
-      <option key={s.id} value={s.id}></option>
-    ));
+  } else {
+    const optionsElements = options
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((s) => (
+        <option key={s.id} value={s.id}>
+          {s.name}
+        </option>
+      ));
 
     return (
       <select
-        onChange={(s) => handleOnChange(s.target.value)}
+        onChange={(e) => handleOnChange(e.target.value)}
         value={dropDownState}
         className="dropdown-input"
       >
-        <option value="">Show All</option>
+        <option disabled value="">
+          Select Show
+        </option>
         {optionsElements}
       </select>
     );

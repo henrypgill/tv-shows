@@ -18,7 +18,7 @@ export interface IEpisode {
   // _links: { self: { href: string } };
 }
 
-export async function getEpisodes(showCode: number): Promise<IEpisode[]> {
+export async function getEpisodes(showCode: string): Promise<IEpisode[]> {
   const rawData = await fetch(
     `https://api.tvmaze.com/shows/${showCode}/episodes`
   );
