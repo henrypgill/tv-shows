@@ -11,15 +11,17 @@ function App() {
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
   const [searchInput, setSearchInput] = useState("");
   const [episodeFilter, setEpisodeFilter] = useState("");
+  //@ts-ignore
+  const [showCode, setShowCode] = useState<number>(82);
 
   useEffect(() => {
     async function fetchEpisodeData() {
-      const episodeData = await getEpisodes();
+      const episodeData = await getEpisodes(showCode);
       setEpisodes(episodeData);
     }
 
     fetchEpisodeData();
-  }, []);
+  }, [showCode]);
 
   const filteredEpisodes = episodes
     .filter(searchEpisodeId(episodeFilter))

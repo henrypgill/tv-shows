@@ -6,7 +6,8 @@ export function searchNameOrSummary(
   return (episode) => {
     const searchStr = subStr.toLowerCase();
     const name = episode.name.toLowerCase();
-    const summary = episode.summary.toLowerCase();
+    const summary =
+      episode.summary === null ? "" : episode.summary.toLowerCase();
 
     return name.includes(searchStr) || summary.includes(searchStr);
   };
