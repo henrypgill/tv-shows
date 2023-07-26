@@ -63,7 +63,9 @@ export interface IShow {
  * @returns an array of IShow objects
  */
 export async function getShows(pageNumber = 1): Promise<IShow[]> {
-  const rawData = await fetch(`http://api.tvmaze.com/shows?page=${pageNumber}`);
+  const rawData = await fetch(
+    `https://api.tvmaze.com/shows?page=${pageNumber}`
+  );
   const showData: IShow[] = await rawData.json();
 
   return showData;
