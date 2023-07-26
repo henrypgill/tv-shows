@@ -1,5 +1,5 @@
-export function removePTags(text: string): string {
-  const regex = /(<p>)|(<\/p>)/g;
+export function removeTags(text: string): string {
+  const regex = /<[^>]*>/g;
 
   return text.replace(regex, "");
 }

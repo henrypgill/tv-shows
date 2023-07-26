@@ -3,7 +3,7 @@ interface SearchBoxProps {
   onChangeHandler(newSearchText: string): void;
 }
 
-export function SearchBox({
+export default function SearchBox({
   searchInput,
   onChangeHandler,
 }: SearchBoxProps): JSX.Element {

@@ -1,11 +1,13 @@
-import { EpisodeView } from "./EpisodeView";
-import { IEpisode } from "../core/fetchData";
+import { IEpisode } from "../core/fetchEpisodes";
+import EpisodeView from "./EpisodeView";
 
 interface EpisodeListProps {
   episodes: IEpisode[];
 }
 
-export function EpisodeList({ episodes }: EpisodeListProps): JSX.Element {
+export default function EpisodeList({
+  episodes,
+}: EpisodeListProps): JSX.Element {
   if (episodes.length === 0) {
     return <h3>No episodes found. Try expanding your search!</h3>;
   }
