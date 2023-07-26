@@ -1,7 +1,7 @@
 import { getEpisodeCode } from "../core/episodeCode";
 import { removePTags } from "../core/parseSummary";
 
-import { IEpisode } from "../core/fetchData";
+import { IEpisode } from "../core/fetchEpisodes";
 
 interface EpisodeViewProps {
   episode: IEpisode;

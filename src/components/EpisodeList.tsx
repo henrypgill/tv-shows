@@ -1,5 +1,5 @@
 import { EpisodeView } from "./EpisodeView";
-import { IEpisode } from "../core/fetchData";
+import { IEpisode } from "../core/fetchEpisodes";
 
 interface EpisodeListProps {
   episodes: IEpisode[];

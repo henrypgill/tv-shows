@@ -1,4 +1,4 @@
-import { IEpisode } from "./fetchData";
+import { IEpisode } from "./fetchEpisodes";
 
 export function searchNameOrSummary(
   subStr: string

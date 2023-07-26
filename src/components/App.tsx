@@ -4,11 +4,13 @@ import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
 import { SearchBox } from "./SearchBox";
 import { FilterDropDown } from "./FilterDropDown";
 import { EpisodeList } from "./EpisodeList";
-import { getEpisodes, IEpisode } from "../core/fetchData";
+import { getEpisodes, IEpisode } from "../core/fetchEpisodes";
+import { getShows, IShow } from "../core/fetchShows";
 import Footer from "./Footer";
 
 function App() {
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
+  const [shows, setShows] = useState<IShow[]>([])
   const [searchInput, setSearchInput] = useState("");
   const [episodeFilter, setEpisodeFilter] = useState("");
   //@ts-ignore
@@ -23,6 +25,20 @@ function App() {
     fetchEpisodeData();
   }, [showCode]);
 
+
+
+  useEffect(() => {
+    async function fetchShowData() {
+      const showData = await getShows()
+      setShows(showData);
+    }
+
+    fetchShowData();
+  }, []);
+
+
+
+
   const filteredEpisodes = episodes
     .filter(searchEpisodeId(episodeFilter))
     .filter(searchNameOrSummary(searchInput));
@@ -31,7 +47,13 @@ function App() {
     <>
       <header>
         <div className="filter-container">
+          {/* <FilterDropDown
+            options={shows}
+            dropDownState={shows}
+            handleOnChange={setShowCode}
+          /> */}
           <FilterDropDown
+            type={"episode"}
             options={episodes}
             dropDownState={episodeFilter}
             handleOnChange={setEpisodeFilter}
