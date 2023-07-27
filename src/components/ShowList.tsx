@@ -16,7 +16,7 @@ export default function ShowList({
 
   return (
     <section>
-      <ol className="episode-list">
+      <ol className="show-list">
         {shows.map((show) => (
           <ShowView key={show.id} show={show} setShowFilter={setShowFilter} />
         ))}

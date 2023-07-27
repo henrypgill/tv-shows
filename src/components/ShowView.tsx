@@ -1,4 +1,4 @@
-// import { removeTags } from "../core/parseSummary";
+import { removeTags } from "../core/parseSummary";
 
 import { IShow } from "../core/fetchShows";
 
@@ -13,7 +13,7 @@ export default function ShowView({
 }: ShowViewProps): JSX.Element {
   const renderImage =
     show.image === null || show.image.medium === null
-      ? "https://placehold.co/240x150"
+      ? "https://placehold.co/210x195"
       : show.image.medium;
 
   function handleShowClick() {
@@ -21,36 +21,34 @@ export default function ShowView({
   }
 
   return (
-    <li>
-      <button className="Show-view" onClick={handleShowClick}>
-        <h2>{show.name}</h2>
-        <div>
-          <div className="show-view-left">
-            <img src={renderImage} alt="of a tv show"></img>
-            <p>{show.summary}</p>
+    <li className="show-view">
+      <button className="show-button" onClick={handleShowClick}>
+        <img className="show-img" src={renderImage} alt="of a tv show"></img>
+        <div className="show-body">
+          <div className="show-text">
+            <h2>{show.name}</h2>
+            <p>{removeTags(show.summary)}</p>
           </div>
-          <div className="show-view-right">
-            <ul>
-              <li>
-                <b>Rated:</b>
-                {show.rating.average}
-              </li>
-              <li>
-                <b>Genres:</b>
-                {show.genres.map((genre) => (
-                  <p key={genre}>{genre}</p>
-                ))}
-              </li>
-              <li>
-                <b>Status:</b>
-                {show.status}
-              </li>
-              <li>
-                <b>Runtime:</b>
-                {show.runtime}
-              </li>
-            </ul>
-          </div>
+          <ul className="show-data">
+            <li>
+              <b>Rated:</b>
+              {show.rating.average}
+            </li>
+            <li>
+              <b>Status:</b>
+              {show.status}
+            </li>
+            <li>
+              <b>Runtime:</b>
+              {show.runtime}
+            </li>
+            <li>
+              <b>Genres:</b>
+              {show.genres.map((genre) => (
+                <p key={genre}>{genre}</p>
+              ))}
+            </li>
+          </ul>
         </div>
       </button>
     </li>

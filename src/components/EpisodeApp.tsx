@@ -50,10 +50,10 @@ export default function EpisodeApp({
   return (
     <>
       <header>
-        <button className="back-button" onClick={() => setShowFilter("")}>
-          Back
-        </button>
         <div className="filter-container">
+          <button className="back-button" onClick={() => setShowFilter("")}>
+            Back
+          </button>
           <FilterDropDown
             type={"show"}
             options={shows}
