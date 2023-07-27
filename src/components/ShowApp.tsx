@@ -34,7 +34,7 @@ export default function ShowApp({
             handleOnChange={setShowFilter}
           />
         </div>
-        <h3 className="filter-count">{`Displaying ${filteredShows.length}/${shows.length} Episodes`}</h3>
+        <h3 className="filter-count">{`Displaying ${filteredShows.length}/${shows.length} Shows`}</h3>
       </header>
       <main>
         <ShowList shows={shows} setShowFilter={setShowFilter} />
