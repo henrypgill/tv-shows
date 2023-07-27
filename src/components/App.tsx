@@ -22,9 +22,9 @@ export default function App() {
     <div>
       {showFilter ? (
         <EpisodeApp
+          shows={shows}
           showFilter={showFilter}
           setShowFilter={setShowFilter}
-          shows={shows}
         />
       ) : (
         <ShowApp
