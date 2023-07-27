@@ -40,9 +40,8 @@ export default function EpisodeApp({
     ...new Set<IEpisode>([
       ...episodes.filter(searchName(searchInput)),
       ...episodes.filter(searchSummary(searchInput)),
-      ...episodes.filter(searchEpisodeId(episodeFilter)),
     ]),
-  ];
+  ].filter(searchEpisodeId(episodeFilter));
 
   const showTitle = (
     shows.find((show) => show.id === parseInt(showFilter)) as IShow
