@@ -3,10 +3,10 @@ export interface IShow {
   // url: string;
   name: string;
   // type: string;
-  language: string;
-  // genres: string[];
+  // language: string;
+  genres: string[];
   status: string;
-  // runtime: number;
+  runtime: number;
   // averageRuntime: number;
   // premiered: string;
   // ended: string;
