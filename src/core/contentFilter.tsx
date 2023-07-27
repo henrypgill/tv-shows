@@ -1,6 +1,8 @@
 import { IEpisode } from "./fetchEpisodes";
 import { IShow } from "./fetchShows";
 
+type searchFilter<T> = (item: T) => boolean;
+
 export function searchName(
   subStr: string
 ): (content: IEpisode | IShow) => boolean {
@@ -43,7 +45,7 @@ export function searchEpisodeId(id: string): (episode: IEpisode) => boolean {
   };
 }
 
-export function combineFilters<T>(...filters: { (item: T): boolean }[]) {
+export function combineFilters<T>(...filters: searchFilter<T>[]) {
   return (searchTerm: T) =>
     filters
       .map((filter) => filter(searchTerm))
