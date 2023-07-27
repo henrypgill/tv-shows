@@ -3,9 +3,7 @@ import { IShow } from "./fetchShows";
 
 type searchFilter<T> = (item: T) => boolean;
 
-export function searchName(
-  subStr: string
-): (content: IEpisode | IShow) => boolean {
+export function searchName(subStr: string): searchFilter<IEpisode | IShow> {
   return (content) => {
     const searchStr = subStr.toLowerCase();
     const name = content.name.toLowerCase();
@@ -14,9 +12,7 @@ export function searchName(
   };
 }
 
-export function searchSummary(
-  subStr: string
-): (content: IEpisode | IShow) => boolean {
+export function searchSummary(subStr: string): searchFilter<IEpisode | IShow> {
   return (content) => {
     const searchStr = subStr.toLowerCase();
     const summary =
@@ -26,7 +22,7 @@ export function searchSummary(
   };
 }
 
-export function searchGenres(subStr: string): (content: IShow) => boolean {
+export function searchGenres(subStr: string): searchFilter<IShow> {
   return (content) => {
     const searchStr = subStr.toLowerCase();
     const genres = content.genres.map((g) => g.toLowerCase());
@@ -35,7 +31,7 @@ export function searchGenres(subStr: string): (content: IShow) => boolean {
   };
 }
 
-export function searchEpisodeId(id: string): (episode: IEpisode) => boolean {
+export function searchEpisodeId(id: string): searchFilter<IEpisode> {
   return (episode) => {
     if (id === "") {
       return true;
