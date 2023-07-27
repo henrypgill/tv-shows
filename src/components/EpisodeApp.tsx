@@ -49,6 +49,7 @@ export default function EpisodeApp({
   const showTitle = (
     shows.find((show) => show.id === parseInt(showFilter)) as IShow
   ).name;
+
   return (
     <>
       <header>
