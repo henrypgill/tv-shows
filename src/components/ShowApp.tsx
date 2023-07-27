@@ -3,7 +3,12 @@ import ShowList from "./ShowList";
 import FilterDropDown from "./FilterDropDown";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
-import { searchName, searchSummary, searchGenres } from "../core/contentFilter";
+import {
+  searchName,
+  searchSummary,
+  searchGenres,
+  combineFilters,
+} from "../core/contentFilter";
 
 export interface ShowAppProps {
   shows: IShow[];
@@ -11,7 +16,6 @@ export interface ShowAppProps {
   setShowFilter(filter: string): void;
 }
 
-//@ts-ignore
 export default function ShowApp({
   shows,
   showFilter,
@@ -19,13 +23,13 @@ export default function ShowApp({
 }: ShowAppProps): JSX.Element {
   const [searchInput, setSearchInput] = useState("");
 
-  const filteredShows = [
-    ...new Set<IShow>([
-      ...shows.filter(searchName(searchInput)),
-      ...shows.filter(searchSummary(searchInput)),
-      ...shows.filter(searchGenres(searchInput)),
-    ]),
-  ];
+  const filterShows = combineFilters(
+    searchName(searchInput),
+    searchSummary(searchInput),
+    searchGenres(searchInput)
+  );
+
+  const filteredShows = shows.filter(filterShows);
 
   return (
     <>

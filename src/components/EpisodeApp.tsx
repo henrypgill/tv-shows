@@ -3,6 +3,7 @@ import {
   searchName,
   searchSummary,
   searchEpisodeId,
+  combineFilters,
 } from "../core/contentFilter";
 import { getEpisodes, IEpisode } from "../core/fetchEpisodes";
 import { IShow } from "../core/fetchShows";
@@ -36,12 +37,14 @@ export default function EpisodeApp({
     fetchEpisodeData();
   }, [showFilter]);
 
-  const filteredEpisodes = [
-    ...new Set<IEpisode>([
-      ...episodes.filter(searchName(searchInput)),
-      ...episodes.filter(searchSummary(searchInput)),
-    ]),
-  ].filter(searchEpisodeId(episodeFilter));
+  const filterEpisodes = combineFilters(
+    searchName(searchInput),
+    searchSummary(searchInput)
+  );
+
+  const filteredEpisodes = episodes
+    .filter(filterEpisodes)
+    .filter(searchEpisodeId(episodeFilter));
 
   const showTitle = (
     shows.find((show) => show.id === parseInt(showFilter)) as IShow

@@ -42,3 +42,10 @@ export function searchEpisodeId(id: string): (episode: IEpisode) => boolean {
     return parseInt(id) === episode.id;
   };
 }
+
+export function combineFilters<T>(...filters: { (item: T): boolean }[]) {
+  return (searchTerm: T) =>
+    filters
+      .map((filter) => filter(searchTerm))
+      .every((result) => result === true);
+}
