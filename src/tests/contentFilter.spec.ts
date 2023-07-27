@@ -1,4 +1,4 @@
-import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
+import { searchNameOrSummary, searchEpisodeId } from "../core/contentFilter";
 import episodes from "./data/got-episodes.json";
 
 // Testing specifically game of thrones episodes from local JSON data

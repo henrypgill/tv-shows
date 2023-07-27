@@ -1,8 +1,9 @@
 import { IEpisode } from "./fetchEpisodes";
+import { IShow } from "./fetchShows";
 
 export function searchNameOrSummary(
   subStr: string
-): (episode: IEpisode) => boolean {
+): (content: IEpisode | IShow) => boolean {
   return (episode) => {
     const searchStr = subStr.toLowerCase();
     const name = episode.name.toLowerCase();

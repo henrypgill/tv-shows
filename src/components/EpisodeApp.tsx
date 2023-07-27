@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
+import { searchNameOrSummary, searchEpisodeId } from "../core/contentFilter";
 import { getEpisodes, IEpisode } from "../core/fetchEpisodes";
 import { IShow } from "../core/fetchShows";
 import SearchBox from "./SearchBox";
