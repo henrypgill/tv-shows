@@ -11,7 +11,6 @@ export interface ShowAppProps {
   setShowFilter(filter: string): void;
 }
 
-//@ts-ignore
 export default function ShowApp({
   shows,
   showFilter,
