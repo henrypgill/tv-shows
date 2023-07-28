@@ -1,5 +1,5 @@
 import episodes from "./data/got-episodes.json";
-import { getEpisodes } from "../core/fetchEpisodes";
+import { getEpisodes } from "../core/fetchData";
 
 test("test fetch data is correct as of 26/07/2023 at 13:46:48 pm", async () => {
   const fetchedEpisodes = await getEpisodes("82");

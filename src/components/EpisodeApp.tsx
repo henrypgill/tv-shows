@@ -5,8 +5,7 @@ import {
   searchEpisodeId,
   combineFilters,
 } from "../core/contentFilter";
-import { getEpisodes, IEpisode } from "../core/fetchEpisodes";
-import { IShow } from "../core/fetchShows";
+import { IEpisode, IShow, cacheFetch, getEpisodes } from "../core/fetchData";
 import SearchBox from "./SearchBox";
 import FilterDropDown from "./FilterDropDown";
 import EpisodeList from "./EpisodeList";
@@ -16,6 +15,8 @@ interface EpisodeAppProps {
   setShowFilter(showCode: string): void;
   shows: IShow[];
 }
+
+const fetchEpisodes = cacheFetch(getEpisodes);
 
 export default function EpisodeApp({
   showFilter,
@@ -27,14 +28,21 @@ export default function EpisodeApp({
   const [episodeFilter, setEpisodeFilter] = useState("");
 
   useEffect(() => {
+    let cancelled = false;
     async function fetchEpisodeData() {
-      const episodeData = await getEpisodes(showFilter);
-      setEpisodes(episodeData);
-      setEpisodeFilter("");
-      setSearchInput("");
+      const episodeData = await fetchEpisodes(showFilter);
+      if (!cancelled) {
+        setEpisodes(episodeData);
+        setEpisodeFilter("");
+        setSearchInput("");
+      }
     }
 
     fetchEpisodeData();
+
+    return () => {
+      cancelled = true;
+    };
   }, [showFilter]);
 
   const filterEpisodes = combineFilters(

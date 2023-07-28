@@ -57,6 +57,26 @@ export interface IShow {
   // };
 }
 
+export interface IEpisode {
+  id: number;
+  // url: string;
+  name: string;
+  season: number;
+  number: number;
+  // type: string;
+  // airdate: string;
+  // airtime: string;
+  // airstamp: string;
+  // rating: { average: number };
+  // runtime: number;
+  image: {
+    medium: string;
+    // original: string;
+  };
+  summary: string;
+  // _links: { self: { href: string } };
+}
+
 /**
  *
  * @param pageNumber the page number of the shows being displayed from the api
@@ -69,4 +89,32 @@ export async function getShows(pageNumber = 1): Promise<IShow[]> {
   const showData: IShow[] = await rawData.json();
 
   return showData;
+}
+
+export async function getEpisodes(showCode: string): Promise<IEpisode[]> {
+  if (showCode === "") {
+    return [];
+  }
+
+  const rawData = await fetch(
+    `https://api.tvmaze.com/shows/${showCode}/episodes`
+  );
+  const episodeData: IEpisode[] = await rawData.json();
+
+  return episodeData;
+}
+
+export function cacheFetch<T, U>(fetchFn: (v: T) => U) {
+  const lookup = new Map<T, U>();
+
+  return async (showCode: T) => {
+    if (lookup.has(showCode)) {
+      return lookup.get(showCode) as U;
+    }
+
+    const episodeData = await fetchFn(showCode);
+    lookup.set(showCode, episodeData);
+
+    return episodeData;
+  };
 }

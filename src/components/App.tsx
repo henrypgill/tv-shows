@@ -3,19 +3,28 @@ import Footer from "./Footer";
 import EpisodeApp from "./EpisodeApp";
 import ShowApp from "./ShowApp";
 import { useState, useEffect } from "react";
-import { getShows, IShow } from "../core/fetchShows";
+import { cacheFetch, getShows, IShow } from "../core/fetchData";
+
+const fetchShows = cacheFetch(getShows);
 
 export default function App() {
   const [showFilter, setShowFilter] = useState("");
   const [shows, setShows] = useState<IShow[]>([]);
 
   useEffect(() => {
+    let cancelled = false;
     async function fetchShowData() {
-      const showData = await getShows();
-      setShows(showData);
+      const showData = await fetchShows(1);
+      if (!cancelled) {
+        setShows(showData);
+      }
     }
 
     fetchShowData();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

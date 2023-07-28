@@ -1,5 +1,4 @@
-import { IEpisode } from "./fetchEpisodes";
-import { IShow } from "./fetchShows";
+import { IEpisode, IShow } from "./fetchData";
 
 type searchFilter<T> = (item: T) => boolean;
 

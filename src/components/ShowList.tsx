@@ -1,4 +1,4 @@
-import { IShow } from "../core/fetchShows";
+import { IShow } from "../core/fetchData";
 import ShowView from "./ShowView";
 
 interface ShowListProps {

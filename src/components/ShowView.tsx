@@ -1,6 +1,5 @@
 import { removeTags } from "../core/parseSummary";
-
-import { IShow } from "../core/fetchShows";
+import { IShow } from "../core/fetchData";
 
 interface ShowViewProps {
   show: IShow;

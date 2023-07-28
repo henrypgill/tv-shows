@@ -1,4 +1,4 @@
-import { IShow } from "../core/fetchShows";
+import { IShow } from "../core/fetchData";
 import ShowList from "./ShowList";
 import FilterDropDown from "./FilterDropDown";
 import SearchBox from "./SearchBox";

@@ -1,4 +1,4 @@
-import { IEpisode } from "../core/fetchEpisodes";
+import { IEpisode } from "../core/fetchData";
 import EpisodeView from "./EpisodeView";
 
 interface EpisodeListProps {
