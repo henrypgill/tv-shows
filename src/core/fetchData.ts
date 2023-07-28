@@ -107,13 +107,13 @@ export async function getEpisodes(showCode: string): Promise<IEpisode[]> {
 export function cacheFetch<T, U>(fetchFn: (v: T) => U) {
   const lookup = new Map<T, U>();
 
-  return async (showCode: T) => {
-    if (lookup.has(showCode)) {
-      return lookup.get(showCode) as U;
+  return async (fetchArg: T) => {
+    if (lookup.has(fetchArg)) {
+      return lookup.get(fetchArg) as U;
     }
 
-    const episodeData = await fetchFn(showCode);
-    lookup.set(showCode, episodeData);
+    const episodeData = await fetchFn(fetchArg);
+    lookup.set(fetchArg, episodeData);
 
     return episodeData;
   };
