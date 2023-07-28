@@ -70,6 +70,8 @@ footer {
   color: black;
   border: 0.2px solid black;
   display: inline-block;
+  min-width: 300px;
+  cursor: pointer;
 }
 
 .search-input {
