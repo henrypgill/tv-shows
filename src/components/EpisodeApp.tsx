@@ -1,26 +1,29 @@
 import { useState, useEffect } from "react";
-import { searchNameOrSummary, searchEpisodeId } from "../core/episodeFilter";
+import {
+  searchName,
+  searchSummary,
+  searchEpisodeId,
+} from "../core/contentFilter";
 import { getEpisodes, IEpisode } from "../core/fetchEpisodes";
-import { getShows, IShow } from "../core/fetchShows";
+import { IShow } from "../core/fetchShows";
 import SearchBox from "./SearchBox";
 import FilterDropDown from "./FilterDropDown";
 import EpisodeList from "./EpisodeList";
 
-export default function EpisodeApp() {
+interface EpisodeAppProps {
+  showFilter: string;
+  setShowFilter(showCode: string): void;
+  shows: IShow[];
+}
+
+export default function EpisodeApp({
+  showFilter,
+  setShowFilter,
+  shows,
+}: EpisodeAppProps) {
   const [episodes, setEpisodes] = useState<IEpisode[]>([]);
-  const [shows, setShows] = useState<IShow[]>([]);
   const [searchInput, setSearchInput] = useState("");
   const [episodeFilter, setEpisodeFilter] = useState("");
-  const [showFilter, setShowFilter] = useState("");
-
-  useEffect(() => {
-    async function fetchShowData() {
-      const showData = await getShows();
-      setShows(showData);
-    }
-
-    fetchShowData();
-  }, []);
 
   useEffect(() => {
     async function fetchEpisodeData() {
@@ -33,14 +36,24 @@ export default function EpisodeApp() {
     fetchEpisodeData();
   }, [showFilter]);
 
-  const filteredEpisodes = episodes
-    .filter(searchEpisodeId(episodeFilter))
-    .filter(searchNameOrSummary(searchInput));
+  const filteredEpisodes = [
+    ...new Set<IEpisode>([
+      ...episodes.filter(searchName(searchInput)),
+      ...episodes.filter(searchSummary(searchInput)),
+    ]),
+  ].filter(searchEpisodeId(episodeFilter));
+
+  const showTitle = (
+    shows.find((show) => show.id === parseInt(showFilter)) as IShow
+  ).name;
 
   return (
     <>
       <header>
         <div className="filter-container">
+          <button className="back-button" onClick={() => setShowFilter("")}>
+            Back
+          </button>
           <FilterDropDown
             type={"show"}
             options={shows}
@@ -62,6 +75,7 @@ export default function EpisodeApp() {
       </header>
 
       <main>
+        <h2 className="show-title">{showTitle}</h2>
         <EpisodeList episodes={filteredEpisodes} />
       </main>
     </>

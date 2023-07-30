@@ -29,12 +29,16 @@ export default function FilterDropDown({
       value={dropDownState}
       className="dropdown-input"
     >
-      {type === "show" ? getShowOptions(options) : getEpisodeOptions(options)}
+      {type === "show" ? (
+        <ShowOptions options={options} />
+      ) : (
+        <EpisodeOptions options={options} />
+      )}
     </select>
   );
 }
 
-function getEpisodeOptions(options: IEpisode[]): JSX.Element {
+function EpisodeOptions({ options }: { options: IEpisode[] }): JSX.Element {
   return (
     <>
       <option value="">All Episodes</option>
@@ -47,7 +51,7 @@ function getEpisodeOptions(options: IEpisode[]): JSX.Element {
   );
 }
 
-function getShowOptions(options: IShow[]): JSX.Element {
+function ShowOptions({ options }: { options: IShow[] }): JSX.Element {
   return (
     <>
       <option disabled value="">
