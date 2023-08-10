@@ -1,15 +1,39 @@
-import { MyComponent } from "./MyComponent";
 import "./App.css";
-import { greet } from "../greet";
+import Footer from "./Footer";
+import EpisodeApp from "./EpisodeApp";
+import ShowApp from "./ShowApp";
+import { useState, useEffect } from "react";
+import { getShows, IShow } from "../core/fetchShows";
 
-function App() {
-    return (
-        <div className="App">
-            <MyComponent />
+export default function App() {
+  const [showFilter, setShowFilter] = useState("");
+  const [shows, setShows] = useState<IShow[]>([]);
 
-            {greet("World")}
-        </div>
-    );
+  useEffect(() => {
+    async function fetchShowData() {
+      const showData = await getShows();
+      setShows(showData);
+    }
+
+    fetchShowData();
+  }, []);
+
+  return (
+    <div>
+      {showFilter ? (
+        <EpisodeApp
+          shows={shows}
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
+        />
+      ) : (
+        <ShowApp
+          shows={shows}
+          showFilter={showFilter}
+          setShowFilter={setShowFilter}
+        />
+      )}
+      <Footer />
+    </div>
+  );
 }
-
-export default App;

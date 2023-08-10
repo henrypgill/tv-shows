@@ -1,3 +1,286 @@
+/* ---------------------- GENERAL STYLING ---------------------- */
+
+/* root element */
 html {
-    background: #f8f8f8;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16;
+  color: black;
+}
+
+/* structure */
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+}
+
+#root {
+  width: 100%;
+}
+
+header {
+  background-color: #d0d0d0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0px;
+  column-gap: 16px;
+}
+
+main {
+  max-width: 1440px;
+  padding-left: 32px;
+  padding-top: 32px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Header Content Styling */
+
+.filter-container {
+  display: flex;
+  column-gap: 16px;
+  margin-left: 32px;
+}
+
+.back-button {
+  background-color: #dfdfdf;
+  border-radius: 4px;
+  height: 30px;
+  color: black;
+  border: 0.2px solid black;
+  display: inline-block;
+  padding: 0px 8px;
+}
+
+.dropdown-input {
+  background-color: #dfdfdf;
+  border-radius: 4px;
+  height: 30px;
+  color: black;
+  border: 0.2px solid black;
+  display: inline-block;
+  min-width: 300px;
+  cursor: pointer;
+}
+
+.search-input {
+  background-color: #dfdfdf;
+  border-radius: 4px;
+  height: 28px;
+  color: black;
+  border: 0.2px solid black;
+  padding: 0px 4px;
+  display: inline-block;
+}
+
+.search-input::placeholder {
+  color: black;
+  opacity: 1;
+}
+
+.filter-count {
+  min-width: 300px;
+  margin-left: 0px;
+}
+
+/* ---------------------- ShowApp STLYING ---------------------- */
+
+/* show container styling */
+.show-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  width: 100%;
+
+  row-gap: 8px;
+}
+
+/* show card styling */
+
+.show-view {
+  display: flex;
+
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.show-button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 24px;
+
+  background-color: white;
+
+  width: 100%;
+  height: 295px;
+
+  border-radius: 4px;
+  justify-content: flex-start;
+  padding: 0;
+  border: none;
+}
+
+.show-img {
+  height: 100%;
+  max-width: 210px;
+  object-fit: cover;
+}
+
+.show-body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 16px;
+
+  justify-content: space-between;
+}
+
+.show-text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  height: 78%;
+}
+
+.show-text p {
+  overflow: auto;
+}
+
+.show-text p,
+h2 {
+  text-align: left;
+}
+
+.show-data {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  padding-bottom: 8px;
+}
+
+.show-data li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.show-data li b {
+  padding-right: 8px;
+}
+
+/* ---------------------- EpisodeApp STLYING ---------------------- */
+
+.show-title {
+  margin: 0;
+}
+
+/* episode container styling */
+.episode-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+/* episode card styling */
+
+.episode-view {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 24px;
+
+  height: 200px;
+
+  justify-content: flex-start;
+  padding: 16px 0px;
+}
+
+.episode-img {
+  height: 100%;
+  max-width: 320px;
+  object-fit: cover;
+}
+
+.episode-text {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.episode-text h3 {
+  font-weight: bolder;
+}
+
+.episode-text h4 {
+  font-weight: bold;
+}
+
+.episode-text p {
+  overflow: auto;
+}
+
+/* ----- general styling ----- */
+
+/* text */
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 8px 16px 16px 8px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 8px 16px 16px 8px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 8px 16px 8px 8px;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 8px 16px 16px 8px;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 8px;
+}
+
+ol,
+ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+li {
+  padding-left: 16px;
+}
+
+button {
+  cursor: pointer;
 }
